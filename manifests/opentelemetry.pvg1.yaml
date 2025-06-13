@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://openobserve-router.telemtry:5081
+  OTEL_EXPORTER_OTLP_HEADERS: "Authorization=Basic YWRtaW5AemhpbWFuLnRlY2g6cVU0SUxTWXY4S3RtM2RRTA==,organization=default,stream-name=default"
+  OTEL_TRACES_EXPORTER: otlp_proto_grpc
+kind: ConfigMap
+metadata:
+  name: opentelemetry

@@ -1,0 +1,52 @@
+env:
+- name: DB_TYPE
+  value: postgresdb
+- name: DB_POSTGRESDB_HOST
+  value: postgresql.infrastructure
+- name: DB_POSTGRESDB_PORT
+  value: "5432"
+- name: N8N_RUNNERS_ENABLED
+  value: "false"
+
+envFrom:
+- secretRef:
+    name: z8m
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 500Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+livenessProbe:
+  http:
+    httpGet:
+      path: /
+      port: http
+readinessProbe:
+  http:
+    httpGet:
+      path: /
+      port: http
+
+service:
+  ports:
+  - name: http
+    port: 3000
+
+ingress:
+  enabled: true
+  hosts:
+  - host: z8m.pvg1.internal.zhiman.tech
+    paths:
+    - path: /
+      port:
+        name: http
+      pathType: Prefix
+  tls:
+  - secretName: pvg1-common-tls
+    hosts:
+    - z8m.pvg1.internal.zhiman.tech
+    

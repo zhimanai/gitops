@@ -1,0 +1,7 @@
+image:
+  registry: zhimanai.azurecr.io
+imagePullSecrets:
+- name: zhimanai-azurecr-io
+
+ingress:
+  className: istio

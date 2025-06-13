@@ -1,0 +1,105 @@
+# 发布相关参数(application/env/instance)，一般在命令行注入
+# 应用名称
+application: nginx
+# 环境名称
+environment: dev
+# 实例名称（多环境功能使用）
+instance: default
+
+# Pod注解与标签
+podAnnotations: {}
+podLabels: {}
+
+# 副本数
+replicaCount: 1
+
+# 镜像
+image:
+  registry: docker.io
+  repository: library/nginx
+  tag: stable-alpine
+  pullPolicy: IfNotPresent
+imagePullSecrets: []
+
+# 启动
+command: []
+args: []
+
+# 资源
+resources: {}
+
+# 环境变量
+env: []
+# - name: "foo"
+#   value: "bar"
+envFrom: []
+# - configMapRef:
+#     name: xxx
+# - secretRef:
+#     name: xxx
+
+# 探活
+livenessProbe: {}
+readinessProbe: {}
+
+# 存储/配置/私密信息
+volumes: []
+volumeMounts: []
+
+# 安全
+podSecurityContext: {}
+securityContext: {}
+
+# 调度
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# 网络端口
+service:
+  type: ClusterIP
+  ports: []
+  # name/port必填，protocol不填也行，一般默认TCP
+  # - name: http
+  #   port: 8080
+  #   protocol: TCP
+
+# 网关
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts: []
+  # - host: chart-example.local
+  #   paths:
+  #   - path: /
+  #     port:
+  #       name: http
+  #     pathType: ImplementationSpecific
+  #   - path: /api
+  #     port:
+  #       number: 8080
+  #     pathType: Prefix
+  tls: []
+
+# 服务账号（一般不用配置，除非调用Kubernetes API）
+serviceAccount:
+  create: false
+  # automount: true
+  # annotations: {}
+  # name: ""
+
+# 弹性伸缩
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# 应用配置
+configs: []
+# - name: config.yaml
+#   path: /etc/app/config.yaml
+#   data: |
+#     foo: bar

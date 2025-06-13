@@ -1,0 +1,13 @@
+{{- if not (empty .Values.configs) }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    {{- include "app-base.labels" . | nindent 4 }}
+data:
+  {{- range .Values.configs }}
+  {{ .name }}: |
+    {{ .data | nindent 2 }}
+  {{- end }}
+{{- end }}
