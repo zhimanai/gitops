@@ -21,15 +21,13 @@ resources:
     memory: 1Gi
 
 livenessProbe:
-  http:
-    httpGet:
-      path: /
-      port: http
+  httpGet:
+    path: /
+    port: http
 readinessProbe:
-  http:
-    httpGet:
-      path: /
-      port: http
+  httpGet:
+    path: /
+    port: http
 
 service:
   ports:

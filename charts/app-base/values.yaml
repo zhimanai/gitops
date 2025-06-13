@@ -1,4 +1,4 @@
-# 发布相关参数(application/env/instance)，一般在命令行注入
+# 发布相关参数(application/environment/instance)，一般在命令行注入
 # 应用名称
 application: nginx
 # 环境名称
